@@ -1,0 +1,9 @@
+List of exposures
+#list_ex  = ['off','auto','night','nightpreview','backlight',
+#            'spotlight','sports','snow','beach','verylong',
+#            'fixedfps','antishake','fireworks']
+
+
+List of white balance effects
+#list_awb = ['off','auto','sun','cloud','shade','tungsten',
+#            'fluorescent','incandescent','flash','horizon']

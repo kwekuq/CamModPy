@@ -1,0 +1,27 @@
+-?,   --help       : This help information
+-w,   --width      : Set image width <size>
+-h,   --height     : Set image height <size>
+-q,   --quality    : Set jpeg quality <0 to 100>
+-o,   --output     : Output filename <filename>
+-v,   --verbose    : Output verbose information during run
+-t,   --timeout    : Time (in ms) before taking picture
+                    (if not specified, set to 5s)
+-th,  --thumb      : Set thumbnail parameters (x:y:quality)
+-d,   --demo       : Run a demo mode
+-e,   --encoding   : Output format (jpg, bmp, gif, png)
+-tl,  --timelapse  : Timelapse mode. Takes a picture every <t>ms
+
+-p,   --preview    : Preview window settings <'x,y,w,h'>
+-f,   --fullscreen : Fullscreen preview mode
+-n,   --nopreview  : Do not display a preview window
+
+-sh,  --sharpness  : Set image sharpness (-100 to 100)
+-co,  --contrast   : Set image contrast (-100 to 100)
+-br,  --brightness : Set image brightness (0 to 100)
+-sa,  --saturation : Set image saturation (-100 to 100)
+-ISO, --ISO        : Set capture ISO
+
+-vs,  --vstab      : Turn on video stablisation
+-rot, --rotation   : Set image rotation (90,180,270)
+-hf,  --hflip      : Set horizontal flip
+-vf,  --vflip      : Set vertical flip

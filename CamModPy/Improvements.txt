@@ -1,0 +1,11 @@
+Version = "0.1" <- PictureMePy is created to take pictures using a raspberry pi
+Version = "0.2" <- class added to take pictures. Good OOP practices implemented
+Version = "0.3" <- the picture me py module can take pictures
+Version = "0.4" <- name changed to raspiPyCam
+Version = "0.5" <- the camera module is working effectively
+Version = "0.6" <- added more settings for picture taking process, easier to make and control a full pipe line directly using the camera module.
+		Name changed to "CamModPy"
+
+Future ->   Added support for video caputuring and effects added.
+            Support for taking videos is next
+            raspivid -o video.h264 " + recTime
