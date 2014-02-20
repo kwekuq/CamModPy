@@ -1,15 +1,16 @@
 __author__ = 'kwekuq'
 
+import os;
 class Camera:
 
-    command = "raspistill -t 100 -o ";
+    command = "raspivid -o ";
     imgLocation = False;
     imgExpose = False;
     imgWhiteBalance = False;
     imgSize = False;
 
     def __init__(self):
-        self.command = "raspivid -o " + myvid.h264 ";
+        self.command = "raspivid -o ";
 
     def setlocation(self, location):
         if self.imgLocation == False:

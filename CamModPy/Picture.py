@@ -3,9 +3,6 @@
 __author__ = 'kwekuq'
 import os
 
-
-
-
 class Camera:
 
     command = "";
@@ -13,6 +10,11 @@ class Camera:
     imgExpose = False;
     imgWhiteBalance = False;
     imgSize = False;
+    quality = False;
+    sharpness = False;
+    contrast = False;
+    contrast = False;
+    
 
     def __init__(self):
         self.command = "raspistill -t 100 -o ";
@@ -66,31 +68,33 @@ class Camera:
             self.imgWhiteBalance = True;
         else:
             print("White balance has already been set, try running clean() if you wish to start over.");
+            
     def setQuality(self, quality):
         if self.quality == False:
             self.command = self.command + "-q " + int(quality) + " ";
-            self.quality == True;
+            self.quality = True;
         else:
             print("Quality has already been set, try running clean() if you wish to start over");
+            
 
     def setSharpness(self, sharpness):
         if self.sharpness == False:
             self.command = self.command + "-sh " + int(sharpness) + " ";
-            self.sharpness == True;
+            self.sharpness = True;
         else:
             print("Sharpness has already been set, try running clean() if you wish to start over");
 
     def setContrast(self, contrast):
         if self.contrast == False:
             self.command = self.command + "-co " + int(contrast) + " ";
-            self.contrast == True;
+            self.contrast = True;
         else:
             print("Sharpness has already been set, try running clean() if you wish to start over");
 
     def setBrightness(self, brightness):
         if self.brightness == False:
             self.command = self.command + "-br " + int(brightness) + " ";
-            self.contrast == True;
+            self.contrast = True;
         else:
             print("Brightness has already been set, try running clean() if you wish to start over");
 
