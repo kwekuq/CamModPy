@@ -3,7 +3,7 @@
 __author__ = 'kwekuq'
 import os
 
-class Camera:
+class StillCamera:
 
     command = "";
     imgLocation = False;
@@ -97,6 +97,13 @@ class Camera:
             self.contrast = True;
         else:
             print("Brightness has already been set, try running clean() if you wish to start over");
+            
+    def setSaturation(self, saturation):
+        if self.saturation == False:
+            self.command = self.command + "-sa " + int(saturation) + " ";
+            self.saturation = True;
+        else:
+            print("Saturation has already been set, try running clean() if you wish to start over");
 
     def clean(self):
         self.command = "";
@@ -109,26 +116,33 @@ class Camera:
 
 
     def capture(self, FileName):
-        #os.system(self.command + FileName)
-        self.command = self.command + FileName + " "
-        print(self.command)
+        os.system(self.command + FileName)
+        #self.command = self.command + FileName + " "
+        #print(self.command)
 
 
 
 #testing that it works proper
 if __name__ == '__main__':
-    cam = Camera()
-    cam.setlocation("img/")
-    cam.capture("Kweku2.jpg")
-    #cam.setSize("600","400")
-    cam.setEasySize("big")
-    #cam.setEasySize("big")
-
-    print("Kweku your command is ", cam.command)
+    cam = StillCamera();
+    cam.capture("GeneralTest.jpg");
     cam.clean();
-    cam.capture("Kweku11.jpg")
-    print("Kweku your clean command is ", cam.command)
-    print(__author__)
+    
+    #Now let us test some effects
+    #Testing the size
+    cam.setSize('400', '600');
+    cam.capture("TestSize.jpg");
+    cam.clean();
+    
+    #Testing easy video sizer
+    cam.setEasySize('small');
+    cam.capture('TestEasyVid.jpg');
+    cam.clean();
+    
+    #Testing the sharpness
+    cam.setSharpness('10');
+    cam.capture('TestSharpness.jpg');
+    cam.clean();
 
 version = '0.6'
 

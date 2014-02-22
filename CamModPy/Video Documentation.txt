@@ -14,10 +14,16 @@
 -p, --preview       : Preview window settings <'x,y,w,h'>
 -f, --fullscreen    : Fullscreen preview mode
 -n, --nopreview     : Do not display a preview window
+
+
+
 -sh, --sharpness    : Set image sharpness (-100 to 100)
 -co, --contrast     : Set image contrast (-100 to 100)
 -br, --brightness   : Set image brightness (0 to 100)
 -sa, --saturation   : Set image saturation (-100 to 100)
+
+
+
 -ISO, --ISO         : Set capture ISO
 -vs, --vstab        : Turn on video stablisation
 -ev, --ev           : Set EV compensation
