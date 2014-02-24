@@ -106,16 +106,16 @@ class MotionCamera:
         print("Clean up complete");
 
     def capture(self, FileName):
-        os.system(self.command + "-o " + FileName + ".h264")
-        #self.command = self.command + "-o " + FileName + ".h264"
-        #print(self.command)
+        #os.system(self.command + "-o " + FileName + ".h264")
+        self.command = self.command + "-o " + FileName + ".h264"
+        print(self.command)
 
 if __name__ == "__main__":
     
     #Let us test a general video
     cam = MotionCamera();
     cam.setDuration('5');
-    cam.setlocation('testVid');
+    #cam.setlocation('testVid');
     cam.capture("GeneralTest");
     cam.clean();
     
@@ -123,21 +123,21 @@ if __name__ == "__main__":
     #Testing the size
     cam.setSize('400', '600');
     cam.setDuration('5');
-    cam.setlocation('testVid');
+    #cam.setlocation('testVid');
     cam.capture("TestSize");
     cam.clean();
     
     #Testing easy video sizer
     cam.setEasySize('small');
     cam.setDuration('5');
-    cam.setlocation('testVid');
+    #cam.setlocation('testVid');
     cam.capture('TestEasyVid');
     cam.clean();
     
     #Testing the sharpness
     cam.setSharpness('10');
     cam.setDuration('5');
-    cam.setlocation('testVid');
+    #cam.setlocation('testVid');
     cam.capture('TestSharpnessVid');
     cam.clean();
     

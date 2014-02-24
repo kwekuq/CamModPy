@@ -1,8 +1,9 @@
+from CamModPy import Picture
 __author__ = 'kwekuq'
 
 import time
-from RaspiPyCam import Picture
-import cv;
+
+
 
 interval = 2;
 Stop = False;

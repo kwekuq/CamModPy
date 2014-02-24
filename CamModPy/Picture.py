@@ -7,13 +7,15 @@ class StillCamera:
 
     command = "";
     imgLocation = False;
-    imgExpose = False;
+    imgExposure = False;
     imgWhiteBalance = False;
     imgSize = False;
     quality = False;
     sharpness = False;
     contrast = False;
     contrast = False;
+    brightness = False;
+    saturation = False;
     
 
     def __init__(self):
@@ -140,27 +142,27 @@ if __name__ == '__main__':
     cam.clean();
     
     #Testing the sharpness
-    cam.setSharpness('1');
+    cam.setSharpness('50');
     cam.capture('TestSharpness.jpg');
     cam.clean();
     
     #Testing the quality
-    cam.setQuality('1');
+    cam.setQuality('30');
     cam.capture('TestQuality.jpg');
     cam.clean();
     
     #Testing the contrast
-    cam.setContrast('1');
+    cam.setContrast('50');
     cam.capture('TestContrast.jpg');
     cam.clean();
     
     #Testing the brightness
-    cam.setBrightness('1');
+    cam.setBrightness('50');
     cam.capture('TestBrightness.jpg');
     cam.clean();
     
     #Testing the saturation
-    cam.setSaturation('1');
+    cam.setSaturation('50');
     cam.capture('TestSaturation.jpg');
     cam.clean();
 
