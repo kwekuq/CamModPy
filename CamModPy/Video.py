@@ -25,7 +25,9 @@ class MotionCamera:
             self.imgLocation = True;
         else:
             print("Location has already been set, try running clean() if you wish to start over.");
-
+    def setName(self, nameOfVid):
+        self.command = self.command + "-o " + nameOfVid + ".h264 "
+        
     def setSize(self, width, height):
         if self.imgSize == False:
             self.command = self.command + "-w " + width + " -h " + height + " "
@@ -105,40 +107,43 @@ class MotionCamera:
         self.imgDuration = False;
         print("Clean up complete");
 
-    def capture(self, FileName):
+    def capture(self):
         #os.system(self.command + "-o " + FileName + ".h264")
-        self.command = self.command + "-o " + FileName + ".h264"
         print(self.command)
 
 if __name__ == "__main__":
     
     #Let us test a general video
     cam = MotionCamera();
-    cam.setDuration('5');
+    cam.setName('testVideo');
+    cam.setDuration('10');
     #cam.setlocation('testVid');
-    cam.capture("GeneralTest");
+    cam.capture();
     cam.clean();
     
     #Now let us test some effects
     #Testing the size
+    cam.setName('testVideoSize');
     cam.setSize('400', '600');
-    cam.setDuration('5');
+    cam.setDuration('10');
     #cam.setlocation('testVid');
-    cam.capture("TestSize");
+    cam.capture();
     cam.clean();
     
     #Testing easy video sizer
+    cam.setName('testVideoSizer');
     cam.setEasySize('small');
     cam.setDuration('5');
     #cam.setlocation('testVid');
-    cam.capture('TestEasyVid');
+    cam.capture();
     cam.clean();
     
     #Testing the sharpness
+    cam.setName('TestSharpnessVid');
     cam.setSharpness('10');
-    cam.setDuration('5');
+    cam.setDuration('10');
     #cam.setlocation('testVid');
-    cam.capture('TestSharpnessVid');
+    cam.capture();
     cam.clean();
     
     #test
