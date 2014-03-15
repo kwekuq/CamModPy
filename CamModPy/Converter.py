@@ -7,16 +7,8 @@ class video():
     command = "";
 
     def __init__(self):
-        self.command = "";
+        self.command = "MP$Box -add ";
         
     def transpose(self, video):
-        self.command = self.command + video;
+        self.command = self.command + video + ".h264 " + video + ".mp4";
         
-class picture():
-    command = "";
-
-    def __init__(self):
-        self.command = "";
-        
-    def transpose(self, video):
-        self.command = self.command + video;

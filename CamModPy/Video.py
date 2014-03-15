@@ -4,6 +4,7 @@ import os;
 class MotionCamera:
 
     command = "raspivid ";
+    fullpath = "";
     imgLocation = False;
     imgExpose = False;
     imgWhiteBalance = False;
