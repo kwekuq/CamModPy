@@ -3,8 +3,8 @@ __author__ = 'kwekuq'
 
 import time
 
-
-
+import numpy
+import Image
 interval = 2;
 Stop = False;
 def setMotion():

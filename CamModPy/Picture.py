@@ -1,6 +1,7 @@
 #!/usr/bin/python
 # Filename: Picture.py
 __author__ = 'kwekuq'
+import subprocess
 import os
 
 class StillCamera:
@@ -17,18 +18,27 @@ class StillCamera:
     brightness = False;
     saturation = False;
     
-
+    message = "";
+    
     def __init__(self):
         self.command = "raspistill -t 100 ";
 
 
     def setlocation(self, location):
         if self.imgLocation == False:
-            #os.system("mkdir -p /" + location)
-            self.command = self.command + location
-            self.imgLocation = True;
+            try:
+                if not os.path.exists(location):
+                    os.makedirs(location)
+                    self.message = ("Directory created!");
+                else:
+                    self.message = ("Directory already exists and using!");
+                self.command = self.command + location
+                self.imgLocation = True;
+                
+            except:
+                self.message = ("Error! Could not create directory, please check permissions.");
         else:
-            print("Location has already been set, try running clean() if you wish to start over.");
+            self.message = ("Location has already been set, try running clean() if you wish to start over.");
 
 
     def setSize(self, width, height):
@@ -36,7 +46,7 @@ class StillCamera:
             self.command = self.command + "-w " + width + " -h " + height + " "
             self.imgSize = True;
         else:
-            print("Capture size has already been set, try running clean() if you wish to start over.")
+            self.message = ("Capture size has already been set, try running clean() if you wish to start over.")
 
 
     def setEasySize(self, size):
@@ -50,10 +60,10 @@ class StillCamera:
             elif size == "small":
                 self.command = self.command + "-w 320 -h 240 ";
             else:
-                print("Please select a size.");
+                self.message = ("Please select a size.");
             self.imgSize = True;
         else:
-            print("Capture size has already been set, try running clean() if you wish to start over.");
+            self.message = ("Capture size has already been set, try running clean() if you wish to start over.");
 
 
     def addExposure(self, exposure):
@@ -61,7 +71,7 @@ class StillCamera:
             self.command = self.command + "-ex " + exposure + " ";
             self.imgExpose = True;
         else:
-            print("Exposure has already been set, try running clean() if you wish to start over.");
+            self.message = ("Exposure has already been set, try running clean() if you wish to start over.");
 
 
     def addWhiteBalance(self, whiteBalance):
@@ -69,14 +79,14 @@ class StillCamera:
             self.command = self.command + "-awb " + whiteBalance + " ";
             self.imgWhiteBalance = True;
         else:
-            print("White balance has already been set, try running clean() if you wish to start over.");
+            self.message = ("White balance has already been set, try running clean() if you wish to start over.");
             
     def setQuality(self, quality):
         if self.quality == False:
             self.command = self.command + "-q " + quality + " ";
             self.quality = True;
         else:
-            print("Quality has already been set, try running clean() if you wish to start over");
+            self.message = ("Quality has already been set, try running clean() if you wish to start over");
             
 
     def setSharpness(self, sharpness):
@@ -84,28 +94,28 @@ class StillCamera:
             self.command = self.command + "-sh " + sharpness + " ";
             self.sharpness = True;
         else:
-            print("Sharpness has already been set, try running clean() if you wish to start over");
+            self.message = ("Sharpness has already been set, try running clean() if you wish to start over");
 
     def setContrast(self, contrast):
         if self.contrast == False:
             self.command = self.command + "-co " + contrast + " ";
             self.contrast = True;
         else:
-            print("Sharpness has already been set, try running clean() if you wish to start over");
+            self.message = ("Sharpness has already been set, try running clean() if you wish to start over");
 
     def setBrightness(self, brightness):
         if self.brightness == False:
             self.command = self.command + "-br " + brightness + " ";
             self.contrast = True;
         else:
-            print("Brightness has already been set, try running clean() if you wish to start over");
+            self.message = ("Brightness has already been set, try running clean() if you wish to start over");
             
     def setSaturation(self, saturation):
         if self.saturation == False:
             self.command = self.command + "-sa " + saturation + " ";
             self.saturation = True;
         else:
-            print("Saturation has already been set, try running clean() if you wish to start over");
+            self.message = ("Saturation has already been set, try running clean() if you wish to start over");
 
     def clean(self):
         self.command = "";
@@ -114,68 +124,17 @@ class StillCamera:
         self.imgExpose = False;
         self.imgWhiteBalance = False;
         self.imgSize = False;
-        print("Clean up complete");
+        self.message = ("Clean up complete");
 
 
     def capture(self, FileName):
-        self.command = self.command + "-o " + FileName + " "
-        os.system(self.command)
-        #print(self.command)
+        try:
+            self.command = self.command + "-o " + FileName + " ";
+            subprocess.call(self.command);
+        except OSError:
+            self.message = "ERROR! Please make sure you have plugged in your Camera Module, and in the correct place!";
 
-
-
-#testing that it works proper
-if __name__ == '__main__':
-    cam = StillCamera();
-    cam.capture("GeneralTest.jpg");
-    cam.clean();
-    
-    #Now let us test some effects
-    #Testing the size
-    cam.setSize('600', '400');
-    cam.capture("TestSize.jpg");
-    cam.clean();
-    
-    #Testing easy video sizer
-    cam.setEasySize('small');
-    cam.capture('TestEasy.jpg');
-    cam.clean();
-    
-    #Testing the sharpness
-    cam.setSharpness('50');
-    cam.capture('TestSharpness.jpg');
-    cam.clean();
-    
-    #Testing the quality
-    cam.setQuality('30');
-    cam.capture('TestQuality.jpg');
-    cam.clean();
-    
-    #Testing the contrast
-    cam.setContrast('50');
-    cam.capture('TestContrast.jpg');
-    cam.clean();
-    
-    #Testing the brightness
-    cam.setBrightness('50');
-    cam.capture('TestBrightness.jpg');
-    cam.clean();
-    
-    #Testing the saturation
-    cam.setSaturation('50');
-    cam.capture('TestSaturation.jpg');
-    cam.clean();
-
-    #Testing the exposure
-    cam.addExposure('beach');
-    cam.capture('TestExposure.jpg');
-    cam.clean();
-    
-    #Testing the whitebalance
-    cam.addWhiteBalance('sun');
-    cam.capture('TestWhiteBalance.jpg');
-    cam.clean();
-version = '0.6'
+version = '0.7'
 
 
 
