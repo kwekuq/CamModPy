@@ -132,41 +132,6 @@ class MotionCamera:
             
 
 version = '0.7'
-if __name__ == "__main__":
-    
-    #Let us test a general video
-    cam = MotionCamera();
-    cam.setName('testVideo');
-    cam.setDuration('10');
-    #cam.setlocation('testVid');
-    cam.capture();
-    cam.clean();
-    
-    #Now let us test some effects
-    #Testing the size
-    cam.setName('testVideoSize');
-    cam.setSize('400', '600');
-    cam.setDuration('10');
-    #cam.setlocation('testVid');
-    cam.capture();
-    cam.clean();
-    
-    #Testing easy video sizer
-    cam.setName('testVideoSizer');
-    cam.setEasySize('small');
-    cam.setDuration('5');
-    #cam.setlocation('testVid');
-    cam.capture();
-    cam.clean();
-    
-    #Testing the sharpness
-    cam.setName('TestSharpnessVid');
-    cam.setSharpness('10');
-    cam.setDuration('10');
-    #cam.setlocation('testVid');
-    cam.capture();
-    cam.clean();
-    
-    #test
+
     
     

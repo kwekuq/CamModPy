@@ -1,14 +1,17 @@
 '''
-Created on 08 Mar 2014
+Created on 28 Mar 2014
 
 @author: kwekuq
 '''
-class video():
+class videoConvert():
     command = "";
     status = False;
 
     def __init__(self):
         self.command = "MP$Box -add ";
+        
+    def setLocation(self,location):
+        self.command = self.command + "/" + location;
         
     def transpose(self, video):
         if(self.status == False):

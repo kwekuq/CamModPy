@@ -1,11 +1,7 @@
 #!/usr/bin/python
-
-
 __author__ = 'kwekuq'
 
 import Camera
-
-
 
 if __name__ == '__main__':
     cam = Camera.image().On();
@@ -17,7 +13,6 @@ if __name__ == '__main__':
     print(cam.message);
     cam = Camera.video().Off(); #This is not necessary at all, but is good practice. If you switch it on, switch it off when you are done with it.
 
-
     cam = Camera.image().On();
     cam.clean();
     print(cam.message);
@@ -28,7 +23,7 @@ if __name__ == '__main__':
     cam.clean();
     print(cam.message);
     
-    #Now let us test some effects
+    #Now let us test some built in effects
     #Testing the size
     cam.setSize('600', '400');
     cam.setlocation("test");
@@ -100,23 +95,52 @@ if __name__ == '__main__':
     cam.capture('TestWhiteBalance.jpg');
     print(cam.message);
     cam.clean();
+    cam = Camera.image().Off();
+    
+    #Now we can start to test video
+    cam = Camera.video().On();
+    #Let us test a general video
+    cam.setName('testVideo');
+    cam.setDuration('10');
+    cam.setlocation('test');
+    cam.capture();
+    cam.clean();
+    
+    #Now let us test some effects
+    #Testing the size
+    cam.setName('testVideoSize');
+    cam.setSize('400', '600');
+    cam.setDuration('10');
+    cam.setlocation('test');
+    cam.capture();
+    tool = Camera.tool().On();
+    tool.setLocation('test');
+    tool.transpose('testVideoSize');
+    tool = Camera.tool().Off();
+    cam.clean();
+    
+    #Testing easy video sizer
+    cam.setName('testVideoSizer');
+    cam.setEasySize('small');
+    cam.setDuration('5');
+    cam.setlocation('test');
+    cam.capture();
+    tool = Camera.tool().On();
+    tool.setLocation('test');
+    tool.transpose('testVideoSizer');
+    tool = Camera.tool().Off();
+    cam.clean();
+    
+    #Testing the sharpness
+    cam.setName('TestSharpnessVid');
+    cam.setSharpness('10');
+    cam.setDuration('10');
+    cam.setlocation('test');
+    cam.capture();
+    tool = Camera.tool().On();
+    tool.setLocation('test');
+    tool.transpose('TestSharpnessVid');
+    tool = Camera.tool().Off();
+    cam.clean();
 
-
-    #print(Camera.command);
-    #cam.setlocation("img/")
-    #cam.capture("Kweku2.jpg")
-    #cam.setSize("600","400")
-    #cam.setEasySize("big")
-    #cam.setEasySize("big")
-    #cam.setlocation('home/');
-    #cam.capture('james.jpg');
-    #print("Kweku your command is ",  cam.command)
-    #cam.clean();
-    #cam.capture("Kweku11.jpg")
-    #print("Kweku your clean command is ",  cam.command)
     print(__author__)
-
-#Camera.__init__("Camera Module");
-#Camera.setEasySize("huge");
-#Camera.capture("Camera Module","Kwekuq.jpg");
-#Camera.sayHi("Camera Moduldce");
